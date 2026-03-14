@@ -1,0 +1,50 @@
+.app 
+{
+  text-align: center;
+}
+
+.container 
+{
+  width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+input 
+{
+  margin: 8px;
+  padding: 8px;
+}
+
+button 
+{
+  padding: 8px 15px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: green;
+  color: white;
+  border: none;
+}
+
+.deleteBtn 
+{
+  background-color: red;
+}
+
+table 
+{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td 
+{
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+th 
+{
+  background-color: lightgray;
+}
