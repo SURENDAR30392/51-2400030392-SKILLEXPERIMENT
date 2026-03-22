@@ -1,11 +1,12 @@
-package com.library.demo;
+package com.university.productapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LibraryApplication {
+public class ProductSearchApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(LibraryApplication.class, args);
+        SpringApplication.run(ProductSearchApplication.class, args);
     }
 }
