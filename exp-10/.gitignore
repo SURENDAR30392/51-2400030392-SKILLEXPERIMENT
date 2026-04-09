@@ -7,27 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Frontend
 node_modules
 dist
 dist-ssr
 *.local
-EXP-14/frontend/node_modules/
-EXP-14/frontend/dist/
-
-# Backend
-target/
-EXP-14/backend/target/
-
-# Workspace
-/.metadata/
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.vscode/
 .idea
-.idea/
 .DS_Store
 *.suo
 *.ntvs*
