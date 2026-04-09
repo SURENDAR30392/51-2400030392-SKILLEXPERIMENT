@@ -12,11 +12,12 @@ node_modules
 dist
 dist-ssr
 *.local
-frontend/node_modules/
-frontend/dist/
+EXP-14/frontend/node_modules/
+EXP-14/frontend/dist/
 
 # Backend
-backend/target/
+target/
+EXP-14/backend/target/
 
 # Workspace
 /.metadata/
