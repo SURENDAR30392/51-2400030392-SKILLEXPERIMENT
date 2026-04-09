@@ -1,22 +1,8 @@
-# Maven
-/target
-!.mvn/wrapper/maven-wrapper.jar
-
-# IDE
-/.idea
-*.iml
-*.ipr
-*.iws
+/target/
+/.idea/
 /.classpath
 /.project
-/.settings
+/.settings/
+/.vscode/
+*.iml
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-# Others
-/node_modules

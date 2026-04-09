@@ -1,28 +1,65 @@
-# Spring Boot JWT Authentication Demo
+# JWT Authentication and Role Authorization
 
-This project demonstrates JWT-based authentication and role-based authorization using Spring Boot.
+This project implements JWT-based authentication for a Spring Boot backend with role-based access control.
 
 ## Features
-- User entity with username, password, and role (ADMIN/EMPLOYEE)
-- `/login` endpoint to generate JWT token
-- JWT filter for authentication
-- Role-based access to endpoints:
-  - `/admin/add` (ADMIN only)
-  - `/admin/delete/{id}` (ADMIN only)
-  - `/employee/profile` (EMPLOYEE only)
-- H2 in-memory database
 
-## How to Run
-1. Build the project: `mvn clean install`
-2. Run the app: `mvn spring-boot:run`
-3. Use Postman to test endpoints:
-   - Login: `POST /login` with `{ "username": "admin", "password": "adminpass" }`
-   - Use the returned JWT as `Bearer <token>` in the Authorization header for other endpoints.
+- `POST /login` generates a JWT token for valid credentials.
+- `POST /admin/add` is accessible only to users with the `ADMIN` role.
+- `DELETE /admin/delete/{employeeId}` is accessible only to users with the `ADMIN` role.
+- `GET /employee/profile` is accessible only to users with the `EMPLOYEE` role.
+- H2 in-memory database is used to store users.
+- Seeded users are created automatically on startup.
 
-## Testing
-- Test all endpoints with and without JWT tokens.
-- Only ADMIN can add/delete employees.
-- EMPLOYEE can access their profile.
+## Seed Users
+
+- `admin` / `admin123` -> `ADMIN`
+- `employee` / `employee123` -> `EMPLOYEE`
+
+## Run the Project
+
+```bash
+mvn clean test
+mvn spring-boot:run
+```
+
+The application starts on `http://localhost:8080`.
+
+## Postman Testing
+
+### Login
+
+`POST http://localhost:8080/login`
+
+```json
+{
+  "username": "admin",
+  "password": "admin123"
+}
+```
+
+### Test secured endpoints
+
+- `POST /admin/add` with `Authorization: Bearer <admin-token>` returns `200 OK`
+- `DELETE /admin/delete/101` with `Authorization: Bearer <admin-token>` returns `200 OK`
+- `GET /employee/profile` with `Authorization: Bearer <employee-token>` returns `200 OK`
+
+### Negative cases
+
+- No token on `/admin/add` -> `401 Unauthorized`
+- Invalid token on `/employee/profile` -> `401 Unauthorized`
+- EMPLOYEE token on `/admin/add` -> `403 Forbidden`
+- ADMIN token on `/employee/profile` -> `403 Forbidden`
+- Invalid password on `/login` -> `401 Unauthorized`
+
+## H2 Console
+
+The H2 console is enabled at `http://localhost:8080/h2-console`.
+
+- JDBC URL: `jdbc:h2:mem:jwtauthdb`
+- Username: `sa`
+- Password: leave blank
 
 ## GitHub
-Push this project to a GitHub repository for version control and sharing.
+
+The backend is ready to be committed and pushed to a single GitHub repository. The push itself was not performed here because no remote repository URL or GitHub credentials were available in this workspace.
